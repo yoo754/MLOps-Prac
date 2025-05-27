@@ -16,7 +16,7 @@ jobs:
       uses: appleboy/ssh-action@v1.0.3
       with:
         host: ${{ secrets.HOST }}
-        username: ${{ secrets.EC2_USER }}
+        username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
           cd ~/MLOps-Prac
