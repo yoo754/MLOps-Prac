@@ -1,16 +1,17 @@
-from pathlib import Path
-import numpy as np
-from fastapi import FastAPI, Response
+from fastapi import FastAPI
 from joblib import load
-from .schemas import Wine, Rating, feature_names
+from .database import engine, Base
+from . import models
 
 
+# 앱 시작 시 테이블 자동 생성
+models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 
 @app.get("/")
 def root():
-    return "Wine Quality Ratings"
+    return "h"
 
 
 @app.get("/healthcheck")
