@@ -11,10 +11,7 @@ services:
     depends_on:
       - postgres
     environment:
-      DB_HOST: postgres
-      DB_USER: myuser
-      DB_PASSWORD: mypassword
-      DB_NAME: mydatabase
+      DATABASE_URL: postgresql://myuser:mypassword@postgres:5432/mydatabase
 
   postgres:
     image: postgres:16
@@ -27,6 +24,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
   postgres_data:
